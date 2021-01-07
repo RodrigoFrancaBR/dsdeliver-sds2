@@ -24,7 +24,7 @@ public class OrderDTO implements Serializable {
 
 	public OrderDTO() {
 	}
-
+	
 	public OrderDTO(Long id, String address, Double latitude,
 			Double longitude, Instant moment, OrderStatus status) {
 		
@@ -36,7 +36,7 @@ public class OrderDTO implements Serializable {
 		this.status = status;
 		
 	}
-
+	
 	public OrderDTO(Order entity) {
 		
 		this.id = entity.getId();
