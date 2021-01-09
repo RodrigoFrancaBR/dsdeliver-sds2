@@ -3,6 +3,7 @@
 /*
 declaração de variaveis 
 */
+
 :root {
   --primary-color: #da5c5c;
   --primary-hover-color: #a74b4b;
@@ -19,7 +20,6 @@ html, body {
 body {
   font-family: 'Open Sans', sans-serif;
 }
-
 /*
 remove o sublinhado do <a>
 */
