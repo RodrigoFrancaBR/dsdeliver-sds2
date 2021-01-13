@@ -1,67 +1,55 @@
+import dayjs from "dayjs";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Header from "../Header";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import { Order } from "../Types";
+import 'dayjs/locale/pt-br'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import "intl";
+import "intl/locale-data/jsonp/pt-BR.js";
 
-export default function OrderCard() {
+// para funcao de formatPrice
+if (Platform.OS === "android") {
+    if (typeof (Intl as any).disableRegExpRestore === "function") {
+        (Intl as any).disableRegExpRestore();
+    }
+}
 
-    // const [orders, setOrders] = useState<Order[]>([])
-    // const [isLoading, setIsLoading] = useState(false)
-    // const navigation = useNavigation()
-    // const isFocused = useIsFocused()
+dayjs.locale('pt-br');
+dayjs.extend(relativeTime);
 
-    // const fetchData = () => {
-    //     setIsLoading(true)
-    //     fetchOrders()
-    //         .then(response => setOrders(response.data))
-    //         .catch(() => Alert.alert('Houve um erro ao buscar os pedidos!'))
-    //         .finally(() => setIsLoading(false))
-    // }
+type Props = {
+    order: Order
+}
 
-    // useEffect(() => {
-    //     if (isFocused) {
-    //         setIsLoading(true)
-    //         fetchOrders()
-    //             .then(response => setOrders(response.data))
-    //             .catch(() => Alert.alert('Houve um erro ao buscar os pedidos!'))
-    //             .finally(() => setIsLoading(false))
-    //     }
-    // }, [isFocused])
+function dateFromNow(date: string) {
+    return dayjs(date).fromNow();
+}
 
+function formatPrice(price: number) {
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
 
-    // const handleOnPress = (order: Order) => {
-    //     navigation.navigate("OrderDetails", {
-    //         order
-    //     })
-    // }
+    return formatter.format(price)
+}
+
+export default function OrderCard({ order }: Props) {
 
     return (
         <>
-        {/* ScrollView para poder usar scroll */}
-            {/* 
-            <ScrollView style={styles.container}>
-                {isLoading ? (
-                    <Text>Buscando pedidos...</Text>
-                ) : (
-                        orders.map(order => (
-                            <TouchableWithoutFeedback
-                                key={order.id}
-                                onPress={() => handleOnPress(order)}
-                            >
-                                <OrderCard order={order} />
-                            </TouchableWithoutFeedback>
-                        ))
-                    )}
-            </ScrollView> */}
+            {/* ScrollView para poder usar scroll */}
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.orderName}>Pedido 1 </Text>
-                    <Text style={styles.orderPrice}>R$ 50,00</Text>
+                    <Text style={styles.orderName}>Pedido {order.id} </Text>
+                    {/* <Text style={styles.orderPrice}>{(order.total)}</Text> */}
+                    <Text style={styles.orderPrice}>{formatPrice(order.total)}</Text>
                 </View>
-                <Text style={styles.text}>Há 30 min</Text>
+                <Text style={styles.text}>{dateFromNow(order.moment)}</Text>
                 <View style={styles.productsList}>
-                    <Text style={styles.text}>Pizza Calabresa1</Text>
-                    <Text style={styles.text}>Pizza Calabresa2</Text>
-                    <Text style={styles.text}>Pizza Calabresa3</Text>
+                    {order.products.map(product => (
+                        <Text key={product.id} style={styles.text}>{product.name}</Text>
+                    ))}
                 </View>
             </View>
         </>
