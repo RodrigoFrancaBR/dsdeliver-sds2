@@ -13,16 +13,16 @@
   <li>Quem também consome essa API é a aplicação <em><strong>(mobile)</strong></em> responsável por acompanhar os pedidos e fazer a entrega.</li>   
  </ul> 
 
-<h1 align="center">Modelo Conceitual e Camadas</h1> 
+## <h1 align="center">Modelo Conceitual e Camadas</h1>
 ![Modelo Conceitual e Camadas](https://github.com/RodrigoFrancaBR/dsdeliver-sds2/blob/main/assets/modelo-conceitual-camadas.png)
 
-<h1 align="center">Layout Web</h1>
+## <h1 align="center">Layout Web</h1>
 ![Web 1](https://github.com/RodrigoFrancaBR/dsdeliver-sds2/blob/main/assets/Layout%20web.PNG)
 
-<h1 align="center">Layout Mobile</h1>
+## <h1 align="center">Layout Mobile</h1>
 ![Mobile 1](https://github.com/RodrigoFrancaBR/dsdeliver-sds2/blob/main/assets/Layout%20mobile.PNG) 
 
-<h1 align="center">Ferramentas e Tecnologias envolvidas no desenvolvimento</h1>
+## <h1 align="center">Ferramentas e Tecnologias envolvidas no desenvolvimento</h1>
 
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=springboot&message=2.4.1&color=6AAD3D&style=plastic&logo=spring"/>
@@ -33,7 +33,7 @@
   <img src="https://img.shields.io/static/v1?label=typescript&message=^4.0.0&color=2F74C0&style=plastic&logo=typescript"/>
 </p>
 
-<h1 align="center">Back end</h1>
+## <h1 align="center">Back end</h1>
 - JDK 11
 - Spring Boot (web, data-jpa, validation, security, test)
 - STS (Spring Tool Suite)
@@ -44,12 +44,13 @@
 - Heroku CLI
 - NPM
 - Git
-<h1 align="center">Front end</h1>
+
+## <h1 align="center">Front end</h1>
 - HTML / CSS / JS / TypeScript
 - ReactJS
 - React Native
 - Expo
-<h1 align="center">Implantação em produção</h1>
+## <h1 align="center">Implantação em produção</h1>
 - Back end: Heroku
 - Front end web: Netlify
 - Banco de dados: Postgresql
